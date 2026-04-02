@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.net.URI;
 import java.net.URL;
 import java.text.Normalizer;
 import java.util.Map;
@@ -37,6 +38,7 @@ public class CloudinaryMediaStorageService implements MediaStorageService {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public StoredMedia storeEncryptedMedia(MultipartFile mediaFile, Long issueId) {
         validateMedia(mediaFile);
 
@@ -44,7 +46,7 @@ public class CloudinaryMediaStorageService implements MediaStorageService {
             String contentType = mediaFile.getContentType();
             String resourceType = contentType != null && contentType.startsWith("video/") ? "video" : "image";
 
-            Map uploadResult = cloudinary.uploader().upload(
+            Map<String, Object> uploadResult = cloudinary.uploader().upload(
                     mediaFile.getBytes(),
                     ObjectUtils.asMap(
                             "resource_type", "auto",
@@ -88,7 +90,7 @@ public class CloudinaryMediaStorageService implements MediaStorageService {
                     .secure(true)
                     .generate(publicId);
 
-            try (var inputStream = new URL(mediaUrl).openStream()) {
+            try (var inputStream = new URI(mediaUrl).toURL().openStream()) {
                 return inputStream.readAllBytes();
             }
         } catch (Exception ex) {

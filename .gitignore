@@ -39,3 +39,7 @@ hs_err_pid*.log
 
 ### Local secrets (never commit) ###
 src/main/resources/application-local-secrets.properties
+
+### OS junk ###
+.DS_Store
+Thumbs.db

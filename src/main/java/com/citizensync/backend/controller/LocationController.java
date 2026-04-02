@@ -3,7 +3,7 @@ package com.citizensync.backend.controller;
 import com.citizensync.backend.dto.LocationOption;
 import com.citizensync.backend.service.LocationService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpMethod;
+//import org.springframework.http.HttpMethod;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
