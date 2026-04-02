@@ -38,7 +38,7 @@ uploads/
 hs_err_pid*.log
 
 ### Local secrets (never commit) ###
-src/main/resources/application-local-secrets.properties
+src/main/resources/application-local-secrets.properties.example
 
 ### OS junk ###
 .DS_Store
