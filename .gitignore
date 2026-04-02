@@ -32,5 +32,10 @@ build/
 ### VS Code ###
 .vscode/
 
+### Local runtime/generated files ###
+.metals/
+uploads/
+hs_err_pid*.log
+
 ### Local secrets (never commit) ###
 src/main/resources/application-local-secrets.properties
